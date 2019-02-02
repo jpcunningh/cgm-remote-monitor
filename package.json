@@ -91,8 +91,10 @@
     "simple-statistics": "^0.7.0",
     "socket.io": "~2.1.1",
     "swagger-ui-dist": "^3.20.4",
+    "tidepool-platform-client": "^0.39.0",
     "traverse": "^0.6.6",
     "uglify-js": "^3.4.9",
+    "uuid": "^3.3.2",
     "jsdom": "~11.11.0"
   },
   "devDependencies": {
