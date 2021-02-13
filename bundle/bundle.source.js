@@ -1,6 +1,20 @@
+import '../static/css/main.css';
+import '../static/css/admin.css';
+import '../static/css/food.css';
+import '../static/css/profile.css';
+import '../static/css/report.css';
+import '../static/css/translations.css';
 import '../static/css/drawer.css';
 import '../static/css/dropdown.css';
 import '../static/css/sgv.css';
+
+import '../views/adminindex.html';
+import '../views/error.html';
+import '../views/foodindex.html';
+import '../views/frame.html';
+import '../views/index.html';
+import '../views/profileindex.html';
+import '../views/reportindex.html';
 
 $ = require("jquery");
 

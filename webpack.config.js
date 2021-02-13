@@ -5,7 +5,6 @@ const pluginArray = [];
 const sourceMapType = 'source-map';
 const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
 
-/*
 if (process.env.NODE_ENV === 'development') {
   console.log('Development environment detected, enabling Bundle Analyzer');
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -43,7 +42,6 @@ if (process.env.NODE_ENV === 'development') {
     logLevel: 'info'
   }));
 }
-*/
 
 pluginArray.push(new webpack.ProvidePlugin({
   $: 'jquery',
@@ -99,6 +97,10 @@ const rules = [
     }
   },
   {
+    test: /\.(html|htm)$/i,
+    loader: 'html-loader',
+  },
+  {
     test: /\.css$/i,
     use: [ 'style-loader',
       {
@@ -116,6 +118,25 @@ const rules = [
       outputPath: 'images'
       //the images will be emmited to public/assets/images/ folder
       //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png);
+    },
+    exclude: /node_modules/
+  },
+  {
+    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file-loader',
+    options: {
+      outputPath: 'fonts'
+      //the fonts will be emmited to public/assets/fonts/ folder
+    },
+    exclude: /node_modules/
+  },
+  {
+    test: /\.mp3$/i,
+    loader: 'file-loader',
+    options: {
+      outputPath: 'audio'
+      //the audio files will be emmited to public/assets/audio/ folder
+      //the audio will be put in the DOM <style> tag as eg. background: url(assets/audio/audio.mp3);
     },
     exclude: /node_modules/
   },
