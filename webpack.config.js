@@ -4,6 +4,7 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const pluginArray = [];
 const sourceMapType = 'source-map';
 const MomentTimezoneDataPlugin = require('moment-timezone-data-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 if (process.env.NODE_ENV === 'development') {
   console.log('Development environment detected, enabling Bundle Analyzer');
@@ -42,6 +43,8 @@ if (process.env.NODE_ENV === 'development') {
     logLevel: 'info'
   }));
 }
+
+pluginArray.push(new WorkboxPlugin.GenerateSW());
 
 pluginArray.push(new webpack.ProvidePlugin({
   $: 'jquery',
@@ -115,7 +118,8 @@ const rules = [
     test: /\.(jpe?g|png|gif)$/i,
     loader: 'file-loader',
     options: {
-      outputPath: 'images'
+      outputPath: 'images',
+      name: '[name].[ext]',
       //the images will be emmited to public/assets/images/ folder
       //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png);
     },
@@ -125,7 +129,8 @@ const rules = [
     test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
     loader: 'file-loader',
     options: {
-      outputPath: 'fonts'
+      outputPath: 'fonts',
+      name: '[name].[ext]',
       //the fonts will be emmited to public/assets/fonts/ folder
     },
     exclude: /node_modules/
@@ -134,7 +139,8 @@ const rules = [
     test: /\.mp3$/i,
     loader: 'file-loader',
     options: {
-      outputPath: 'audio'
+      outputPath: 'audio',
+      name: '[name].[ext]',
       //the audio files will be emmited to public/assets/audio/ folder
       //the audio will be put in the DOM <style> tag as eg. background: url(assets/audio/audio.mp3);
     },
