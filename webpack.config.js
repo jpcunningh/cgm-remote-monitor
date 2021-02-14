@@ -100,10 +100,6 @@ const rules = [
     }
   },
   {
-    test: /\.(html|htm)$/i,
-    loader: 'html-loader',
-  },
-  {
     test: /\.css$/i,
     use: [ 'style-loader',
       {
@@ -116,35 +112,25 @@ const rules = [
   },
   {
     test: /\.(jpe?g|png|gif)$/i,
-    loader: 'file-loader',
-    options: {
-      outputPath: 'images',
-      name: '[name].[ext]',
-      //the images will be emmited to public/assets/images/ folder
-      //the images will be put in the DOM <style> tag as eg. background: url(assets/images/image.png);
+    type: 'asset/resource',
+    generator: {
+      filename: 'images/[name].[ext]',
     },
-    exclude: /node_modules/
   },
   {
     test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file-loader',
-    options: {
-      outputPath: 'fonts',
-      name: '[name].[ext]',
-      //the fonts will be emmited to public/assets/fonts/ folder
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name].[ext]',
     },
-    exclude: /node_modules/
   },
   {
     test: /\.mp3$/i,
     loader: 'file-loader',
-    options: {
-      outputPath: 'audio',
-      name: '[name].[ext]',
-      //the audio files will be emmited to public/assets/audio/ folder
-      //the audio will be put in the DOM <style> tag as eg. background: url(assets/audio/audio.mp3);
+    type: 'asset/resource',
+    generator: {
+      filename: 'audio/[name].[ext]',
     },
-    exclude: /node_modules/
   },
   {
     test: require.resolve('jquery'),
@@ -152,7 +138,14 @@ const rules = [
     options: {
       exposes: ['$']
     }
-  }
+  },
+  {
+    test: /\.(html|htm)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: '[name][ext]',
+    },
+  },
 ];
 
 const appEntry = ['./bundle/bundle.source.js'];
