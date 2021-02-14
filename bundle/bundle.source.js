@@ -8,6 +8,11 @@ import '../static/css/drawer.css';
 import '../static/css/dropdown.css';
 import '../static/css/sgv.css';
 
+import '../static/audio/alarm2.mp3';
+import '../static/audio/alarm2.ogg';
+import '../static/audio/alarm.mp3';
+import '../static/audio/alarm.ogg';
+
 import '../views/adminindex.html';
 import '../views/error.html';
 import '../views/foodindex.html';

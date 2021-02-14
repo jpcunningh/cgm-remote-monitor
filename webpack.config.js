@@ -100,6 +100,13 @@ const rules = [
     }
   },
   {
+    test: /\.(html|htm)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: '[name][ext]',
+    },
+  },
+  {
     test: /\.css$/i,
     use: [ 'style-loader',
       {
@@ -114,23 +121,29 @@ const rules = [
     test: /\.(jpe?g|png|gif)$/i,
     type: 'asset/resource',
     generator: {
-      filename: 'images/[name].[ext]',
+      filename: 'static/images/[name].[ext]',
     },
   },
   {
     test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
     type: 'asset/resource',
     generator: {
-      filename: 'fonts/[name].[ext]',
+      filename: 'static/fonts/[name].[ext]',
     },
   },
   {
-    test: /\.mp3$/i,
-    loader: 'file-loader',
+    test: /\.(mp3|ogg)$/i,
     type: 'asset/resource',
     generator: {
-      filename: 'audio/[name].[ext]',
+      filename: 'static/audio/[name].[ext]',
     },
+/*
+    loader: 'file-loader',
+    options: {
+      outputPath: 'static/audio',
+      name: '[name].[ext]',
+    },
+*/
   },
   {
     test: require.resolve('jquery'),
@@ -138,13 +151,6 @@ const rules = [
     options: {
       exposes: ['$']
     }
-  },
-  {
-    test: /\.(html|htm)$/i,
-    type: 'asset/resource',
-    generator: {
-      filename: '[name][ext]',
-    },
   },
 ];
 
