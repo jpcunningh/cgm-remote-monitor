@@ -753,6 +753,18 @@
   </div>
 
   <script>
+    $(document).on('online', function() {
+	    console.log('Application got online event, reloading');
+	    window.location.reload();
+    });
+
+    $(document).ready(function() {
+	    console.log('Application got ready event');
+	    window.Nightscout.client.init();
+    });
+  </script>
+
+  <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(function(reg) {
