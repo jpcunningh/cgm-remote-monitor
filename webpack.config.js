@@ -153,7 +153,6 @@ const clockEntry = ['./bundle/bundle.clocks.source.js'];
 let mode = 'production';
 let publicPath = '/bundle/';
 
-/*
 if (process.env.NODE_ENV === 'development') {
   mode = 'development';
   publicPath = '/devbundle/';
@@ -165,7 +164,6 @@ if (process.env.NODE_ENV === 'development') {
   appEntry.unshift(hot);
   clockEntry.unshift(hot);
 }
-*/
 
 const optimization = {};
 
