@@ -137,13 +137,6 @@ const rules = [
     generator: {
       filename: 'static/audio/[name].[ext]',
     },
-/*
-    loader: 'file-loader',
-    options: {
-      outputPath: 'static/audio',
-      name: '[name].[ext]',
-    },
-*/
   },
   {
     test: require.resolve('jquery'),
@@ -160,6 +153,7 @@ const clockEntry = ['./bundle/bundle.clocks.source.js'];
 let mode = 'production';
 let publicPath = '/bundle/';
 
+/*
 if (process.env.NODE_ENV === 'development') {
   mode = 'development';
   publicPath = '/devbundle/';
@@ -171,6 +165,7 @@ if (process.env.NODE_ENV === 'development') {
   appEntry.unshift(hot);
   clockEntry.unshift(hot);
 }
+*/
 
 const optimization = {};
 
